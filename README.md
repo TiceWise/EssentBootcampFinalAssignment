@@ -49,8 +49,8 @@ In the first part we're creating endpoints that will handle the registration and
 This endpoint should create a new account. The id of this account should be a randomly generated uuidv4. Use the [uuid](https://www.npmjs.com/package/uuid) package to do this. The balance returned should always be a number. In part 1, this balance will always be 0.
 
 | Endpoint  | Method | Case          | Request Body       | Response Body                                                              | Response Status Code |
-| --------- | ------ | ------------- | ------------------ | -------------------------------------------------------------------------- |----------------------|
-| /accounts | POST   | Success       | `{ name: 'Jaap' }` | `{ id: '8cb5c25c-fd5b-4299-9f21-0cf9530f2187'; name: 'Jaap'; balance: 0 }` | 203                  |
+| --------- | ------ | ------------- | ------------------ | -------------------------------------------------------------------------- | -------------------- |
+| /accounts | POST   | Success       | `{ name: 'Jaap' }` | `{ id: '8cb5c25c-fd5b-4299-9f21-0cf9530f2187', name: 'Jaap', balance: 0 }` | 200                  |
 | /accounts | POST   | Invalid Input |                    | _None_                                                                     | 400                  |
 
 #### 2) GET: /accounts
@@ -81,23 +81,23 @@ When the server starts (`Simulated-Day = 0`), the following products exist in th
 ```typescript
 export const products = [
   {
-    id: 'solar',
-    title: 'Solar Panel',
-    description: 'Super duper Essent solar panel',
+    id: "solar",
+    title: "Solar Panel",
+    description: "Super duper Essent solar panel",
     stock: 10,
     price: 750,
   },
   {
-    id: 'insulation',
-    title: 'Insulation',
-    description: 'Cavity wall insulation',
+    id: "insulation",
+    title: "Insulation",
+    description: "Cavity wall insulation",
     stock: 10,
     price: 2500,
   },
   {
-    id: 'heatpump',
-    title: 'Awesome Heatpump',
-    description: 'Hybrid heat pump',
+    id: "heatpump",
+    title: "Awesome Heatpump",
+    description: "Hybrid heat pump",
     stock: 3,
     price: 5000,
   },
@@ -106,38 +106,38 @@ export const products = [
 
 Please implement the following endpoints:
 
-#### 4) POST: /accounts/:accountId/deposit
+#### 4) POST: /accounts/:accountId/deposits
 
 This endpoint should register the deposit. The id returned should be the deposit id. The accountId returned should equal the id of the account that deposited the money. Deposits should only count towards your balance at the end of the day (meaning, if you're deposting an mount on day `3`, this deposit should only be reflected in your balance on day `4` and onwards).
 
 ##### Request
 
-| Endpoint                     | Method | Request Body      | Request Header      |
-| ---------------------------- | ------ | ----------------- | ------------------- |
-| /accounts/:accountId/deposit | POST   | `{ amount: 250 }` | `Simulated-Day: 10` |
+| Endpoint                      | Method | Request Body      | Request Header      |
+| ----------------------------- | ------ | ----------------- | ------------------- |
+| /accounts/:accountId/deposits | POST   | `{ amount: 250 }` | `Simulated-Day: 10` |
 
 ##### Response
 
 | Case          | Response Body                                                                | Response Status code |
 | ------------- | ---------------------------------------------------------------------------- | -------------------- |
-| Success       | `{ id: '8cb5c25c-fd5b-4299-9f21-0cf9530f2187'; name: 'Jaap'; balance: 250 }` | 201                  |
+| Success       | `{ id: '8cb5c25c-fd5b-4299-9f21-0cf9530f2187', name: 'Jaap', balance: 250 }` | 201                  |
 | Invalid input | _None_                                                                       | 400                  |
 
-#### 5) POST: /accounts/:accountId/purchase
+#### 5) POST: /accounts/:accountId/purchases
 
 This endpoint should register a product purchase. An account may only purchase this product if it has enough funds and if the product is in stock. A purchase is illegal if the simulated day of the new purchase is earlier than the simulated day of the latest purchase. This means you can only register purchases chronologically.
 
 ##### Request
 
-| Endpoint                      | Method | Request Body                | Request Header      |
-| ----------------------------- | ------ | --------------------------- | ------------------- |
-| /accounts/:accountId/purchase | POST   | `{ productId: 'heatpump' }` | `Simulated-Day: 11` |
+| Endpoint                       | Method | Request Body                | Request Header      |
+| ------------------------------ | ------ | --------------------------- | ------------------- |
+| /accounts/:accountId/purchases | POST   | `{ productId: 'heatpump' }` | `Simulated-Day: 11` |
 
 ##### Response
 
 | Case                  | Response Body | Response Status code |
 | --------------------- | ------------- | -------------------- |
-| Success               | _None_        | 200                  |
+| Success               | _None_        | 201                  |
 | Not enough stock      | _None_        | 409                  |
 | Not enough funds      | _None_        | 409                  |
 | Invalid input         | _None_        | 400                  |
@@ -149,16 +149,16 @@ This endpoint should add a product. This product should be considered available 
 
 ##### Request
 
-| Endpoint  | Method | Request Body                                                                           | Request Header |
-| --------- | ------ | -------------------------------------------------------------------------------------- | -------------- |
-| /products | POST   | `{name: "Solar System", description: "Some nice description", price: 1000, stock: 5 }` | _None_         |
+| Endpoint  | Method | Request Body                                                                            | Request Header |
+| --------- | ------ | --------------------------------------------------------------------------------------- | -------------- |
+| /products | POST   | `{title: "Solar System", description: "Some nice description", price: 1000, stock: 5 }` | _None_         |
 
 ##### Response
 
-| Case          | Response Body                                                                                                              | Response Status code |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| Success       | {id: "1231-gagawg-2415g-agagw-355325", name: "Solar System", description: "Some nice description", price: 1000, stock: 5 } | 203                  |
-| Invalid input | _None_                                                                                                                     | 400                  |
+| Case          | Response Body                                                                                                                 | Response Status code |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| Success       | `{id: "1231-gagawg-2415g-agagw-355325", title: "Solar System", description: "Some nice description", price: 1000, stock: 5 }` | 201                  |
+| Invalid input | _None_                                                                                                                        | 400                  |
 
 #### 7) GET: /products
 
