@@ -25,7 +25,7 @@ Your result will be evaluated based on 1) correctness and functionality, 2) good
 - Repository creation: Create a (public) GitHub repository from scratch for the assignment.
 - Commit messages: Use commit messages that satisfy the rules stated by the [conventional commits standard](https://www.conventionalcommits.org/en/v1.0.0/). Make sure that the commit messages accurately describe the changes made. Commit code regularly, at least once per assignment (1-9), but more frequent commits are encouraged.
 - Typing: Define and use types and interfaces (preferred over classes for this assignment) where needed to ensure code clarity and maintainability.
-- Testing: Test your logic and endpoints thoroughly. The homework of the last session (Fullstack Open Part 4b) explained how to test endpoints.
+- Testing: Test your logic and endpoints thoroughly with unit tests. The homework of the last session (Fullstack Open Part 4b) explained how to unit test endpoints.
 
 ### Clean code and maintainability
 
