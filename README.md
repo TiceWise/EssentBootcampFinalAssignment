@@ -223,4 +223,4 @@ This endpoint should set the interest rate. The interest rates are calculated dy
 
 ## Turning in the assignment
 
-Once finished, share the URL of your repository with Jaap and Thijs. You have one week for the assignment, so you have until the 22nd of September to submit the assignment.
+Once finished, share the URL of your repository with Wesley and Thijs. You have one week for the assignment, so you have up to and including the 13th of November to submit the assignment.
