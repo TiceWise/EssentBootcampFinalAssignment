@@ -108,7 +108,7 @@ Please implement the following endpoints:
 
 #### 4) POST: /accounts/:accountId/deposits
 
-This endpoint should register the deposit. The id returned should be the deposit id. The accountId returned should equal the id of the account that deposited the money. Deposits should only count towards your balance at the end of the day (meaning, if you're deposting an mount on day `3`, this deposit should only be reflected in your balance on day `4` and onwards).
+This endpoint should register the deposit. The `accountId` should be the id of the account on which to deposited the money. The id returned should be the deposit id. Deposits should only count towards your balance at the end of the day (meaning, if you're deposting an mount on day `3`, this deposit should only be reflected in your balance on day `4` and onwards).
 
 ##### Request
 
