@@ -145,7 +145,7 @@ This endpoint should register a product purchase. An account may only purchase t
 
 #### 6) POST: /products
 
-This endpoint should add a product. This product should be considered available from day 0. The response should be a list of all products. The id of the product should be randomly generated.
+This endpoint should add a product. This product should be considered available from day 0. The response should be the added product. The id of the product should be randomly generated.
 
 ##### Request
 
